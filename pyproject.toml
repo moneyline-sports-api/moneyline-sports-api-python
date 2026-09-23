@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "moneyline-sports-api"
+dynamic = ["version"]
+description = "Official Python SDK for MoneyLine Sports API: live odds, player props, hit rates, +EV, arbitrage and scores."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [{ name = "MoneyLine Sports API", email = "cole@moneylineapp.com" }]
+keywords = ["sports api", "odds api", "sports betting api", "player props", "sports data", "nfl odds", "nba odds", "arbitrage", "expected value", "moneyline"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://www.moneylineapp.com"
+Documentation = "https://www.moneylineapp.com/docs"
+Coverage = "https://www.moneylineapp.com/coverage"
+Source = "https://github.com/moneyline-sports-api/moneyline-sports-api-python"
+
+[tool.hatch.version]
+path = "src/moneyline_sports_api/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/moneyline_sports_api"]
