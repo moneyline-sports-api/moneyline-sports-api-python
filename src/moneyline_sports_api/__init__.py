@@ -9,7 +9,7 @@ import urllib.parse
 import urllib.request
 from typing import Any, Optional
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __all__ = ["MoneyLine", "MoneyLineError", "DEFAULT_BASE_URL"]
 
 DEFAULT_BASE_URL = "https://mlapi.bet"
@@ -96,8 +96,10 @@ class MoneyLine:
     def player_props(self, **query: Any) -> Any:
         return self.get("/v1/player-props", **query)
 
-    def hit_rates(self, player_id: str, **query: Any) -> Any:
-        return self.get(f"/v1/players/{urllib.parse.quote(player_id, safe='')}/hit-rates", **query)
+    def hit_rates(self, player_id: str, *, market: str, line: float, **query: Any) -> Any:
+        """Hit rates for one prop. The API rejects a call without both `market` and `line`."""
+        path = f"/v1/players/{urllib.parse.quote(player_id, safe='')}/hit-rates"
+        return self.get(path, market=market, line=line, **query)
 
     def ev_bets(self, **query: Any) -> Any:
         return self.get("/v1/edge/ev", **query)

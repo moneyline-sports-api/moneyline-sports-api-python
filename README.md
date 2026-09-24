@@ -36,8 +36,8 @@ ev = ml.ev_bets(league="nfl", limit=10)
 arbs = ml.arbitrage(league="mlb")
 
 # Hit rates over the last 5, 10 and 25 games and the season
-# (player IDs come back on every player-prop record)
-rates = ml.hit_rates(player_id, market="player_points")
+# for one prop. Take the player ID and line from a player-prop record.
+rates = ml.hit_rates("nba-p-3934672", market="player_points", line=24.5)
 
 # Ask MoneyLine AI a question grounded in live data
 answer = ml.ask("Best NBA player props tonight?")
